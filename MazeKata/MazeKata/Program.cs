@@ -8,6 +8,7 @@ namespace MazeKata
         {
             Console.WriteLine("Hello World!");
             Console.WriteLine("Braden was here.");
+            Console.WriteLine("James was also here.");
         }
     }
 }
