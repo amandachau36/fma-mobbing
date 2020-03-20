@@ -8,17 +8,16 @@ namespace TestProject2
         [Fact]
         public void It_Should_Return_A_Maze_Of_Correct_Size_When_Given_String()
         {
-            string a = ".W.\n" +
+            var a = ".W.\n" +
                        ".W.\n" +
                        "...";
             
-            var mazeGenerator = new MazeGenerator();
-
-            var maze = mazeGenerator.Generate(a);
+            var maze = new Maze(a);
             
-            Assert.Equal(3, maze.Rows());
-            
-            
+            Assert.Equal(3, maze.Rows.Count);
         }
+        
+        [Fact]
+        public void It_
     }
 }
