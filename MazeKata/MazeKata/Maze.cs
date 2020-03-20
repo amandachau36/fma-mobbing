@@ -5,7 +5,7 @@ namespace MazeKata
 {
     public class Maze
     {
-        public List<string> Rows { get; private set; }
+        public List<List<ISpot>> Rows { get; private set; }
         
         public Maze (string map)
         {

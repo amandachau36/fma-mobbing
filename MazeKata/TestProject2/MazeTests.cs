@@ -16,8 +16,15 @@ namespace TestProject2
             
             Assert.Equal(3, maze.Rows.Count);
         }
-        
+
         [Fact]
-        public void It_
+        public void It_Should_Return_Walls_When_Given_A_Row_Of_Walls() {
+            var a = "WWW";
+            var maze = new Maze(a);
+
+            foreach (var spot in maze.Rows[0]) {
+                Assert.IsType<Wall>(spot);
+            }
+        }
     }
 }
