@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -22,9 +23,13 @@ namespace MazeKata
                     case 'W':
                         spots.Add(new Wall());
                         break;
+                    case '.':
+                        spots.Add( new Floor());
+                        break;
+                    default:
+                        throw new Exception();
                 }
             }
-
             return spots;
         }
     }

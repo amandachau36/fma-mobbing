@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using MazeKata;
 using Xunit;
 
@@ -22,9 +23,17 @@ namespace TestProject2
             var a = "WWW";
             var maze = new Maze(a);
 
-            foreach (var spot in maze.Rows[0]) {
-                Assert.IsType<Wall>(spot);
-            }
+            var expectedRow = new List<ISpot>
+            {
+                new Wall(),
+                new Wall(),
+                new Wall()
+            }; 
+            
+            Assert.NotStrictEqual(expectedRow, maze.Rows[0]);
+            // foreach (var spot in maze.Rows[0]) {
+            //     Assert.IsType<Wall>(spot);
+            // }
         }
         
         [Fact]
@@ -36,5 +45,16 @@ namespace TestProject2
                 Assert.IsType<Floor>(spot);
             }
         }
+        
+        
+        [Fact]
+        public void It_Should_Return_ListOfThreeSpots_When_Given_A_String_Of_3_Chars() {
+            var a = "...";
+            var maze = new Maze(a);
+
+            Assert.Equal(3, maze.Rows[0].Count);
+        }
+        
+        
     }
 }
