@@ -10,27 +10,28 @@ namespace MazeKata
         
         public Maze (string map)
         {
-            var StringRows = map.Split("\n").ToList();
-            foreach (var row in StringRows) {
+            var stringRows = map.Split("\n").ToList();
+            foreach (var row in stringRows) {
                 Rows.Add(GetISpotsFromString(row));
             }
         }
 
         private List<ISpot> GetISpotsFromString(string row) {
             var spots = new List<ISpot>();
-            foreach (var spot in row) {
-                switch (spot) {
-                    case 'W':
-                        spots.Add(new Wall());
-                        break;
-                    case '.':
-                        spots.Add( new Floor());
-                        break;
-                    default:
-                        throw new Exception();
-                }
+            foreach (var character in row) {
+                spots.Add(ParseSpot(character));
             }
             return spots;
+        }
+
+        private ISpot ParseSpot(char character)
+        {
+            return character switch
+            {
+                'W' => new Wall(),
+                '.' => new Floor(),
+                _ => throw new MazeCharacterNotValidException(character)
+            };
         }
     }
 }

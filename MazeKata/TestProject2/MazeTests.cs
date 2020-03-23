@@ -28,12 +28,16 @@ namespace TestProject2
                 new Wall(),
                 new Wall(),
                 new Wall()
-            }; 
+            };
             
             Assert.NotStrictEqual(expectedRow, maze.Rows[0]);
-            // foreach (var spot in maze.Rows[0]) {
-            //     Assert.IsType<Wall>(spot);
-            // }
+        }        
+        
+        [Fact]
+        public void It_Should_Throw_A_Maze_String_Not_Valid_Exception_When_Given_An_Invalid_String()
+        {
+            var a = "*%^";
+            Assert.Throws<MazeCharacterNotValidException>(() => new Maze(a));
         }
         
         [Fact]
@@ -41,20 +45,14 @@ namespace TestProject2
             var a = "...";
             var maze = new Maze(a);
 
-            foreach (var spot in maze.Rows[0]) {
-                Assert.IsType<Floor>(spot);
-            }
+            var expectedRow = new List<ISpot>
+            {
+                new Floor(),
+                new Floor(),
+                new Floor()
+            }; 
+            
+            Assert.NotStrictEqual(expectedRow, maze.Rows[0]);
         }
-        
-        
-        [Fact]
-        public void It_Should_Return_ListOfThreeSpots_When_Given_A_String_Of_3_Chars() {
-            var a = "...";
-            var maze = new Maze(a);
-
-            Assert.Equal(3, maze.Rows[0].Count);
-        }
-        
-        
     }
 }
