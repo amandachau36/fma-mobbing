@@ -18,12 +18,22 @@ namespace TestProject2
         }
 
         [Fact]
-        public void It_Should_Return_Walls_When_Given_A_Row_Of_Walls() {
+        public void It_Should_Return_Walls_When_Given_A_String_Of_Double_Ewes() {
             var a = "WWW";
             var maze = new Maze(a);
 
             foreach (var spot in maze.Rows[0]) {
                 Assert.IsType<Wall>(spot);
+            }
+        }
+        
+        [Fact]
+        public void It_Should_Return_Floors_When_Given_A_String_Of_Dots() {
+            var a = "...";
+            var maze = new Maze(a);
+
+            foreach (var spot in maze.Rows[0]) {
+                Assert.IsType<Floor>(spot);
             }
         }
     }
